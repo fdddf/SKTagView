@@ -27,6 +27,13 @@
 ///default:YES
 @property (assign, nonatomic) BOOL enable;
 
+@property(nonatomic, strong, nullable) UIColor *highlightedBorderColor;
+@property(nonatomic, strong, nullable) UIColor *highlightedTextColor;
+
+@property(nonatomic, strong, nullable) UIColor *selectedTextColor;
+@property(nonatomic, strong, nullable) UIColor *selectedBgColor;
+@property(nonatomic, strong, nullable) UIColor *selectedBorderColor;
+
 - (nonnull instancetype)initWithText: (nonnull NSString *)text;
 + (nonnull instancetype)tagWithText: (nonnull NSString *)text;
 

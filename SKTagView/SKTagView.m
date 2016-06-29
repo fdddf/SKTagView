@@ -154,6 +154,14 @@
 #pragma mark - IBActions
 
 - (void)onTag: (UIButton *)btn {
+    if (self.shouldRemoveSelections) {
+        for (SKTagButton *btn in self.tags) {
+            btn.selected = NO;
+        }
+    }
+    if (self.shouldSelectOnTap) {
+        btn.selected = YES;
+    }
     if (self.didTapTagAtIndex) {
         self.didTapTagAtIndex([self.subviews indexOfObject: btn]);
     }

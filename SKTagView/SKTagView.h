@@ -17,6 +17,10 @@
 @property (assign, nonatomic) BOOL singleLine;
 @property (copy, nonatomic, nullable) void (^didTapTagAtIndex)(NSUInteger index);
 
+@property (nonatomic, assign) BOOL shouldSelectOnTap;
+@property (nonatomic, assign) BOOL shouldRemoveSelections;
+
+
 - (void)addTag: (nonnull SKTag *)tag;
 - (void)insertTag: (nonnull SKTag *)tag atIndex:(NSUInteger)index;
 - (void)removeTag: (nonnull SKTag *)tag;
