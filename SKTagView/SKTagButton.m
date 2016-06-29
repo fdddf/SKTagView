@@ -24,6 +24,7 @@
         btn.titleLabel.font = tag.font ?: [UIFont systemFontOfSize: tag.fontSize];
     }
     
+    [btn setBackgroundImage:[self imageWithColor:tag.bgColor] forState:UIControlStateNormal];
     btn.backgroundColor = tag.bgColor;
     btn.contentEdgeInsets = tag.padding;
     btn.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -41,10 +42,10 @@
     }
     
     btn.userInteractionEnabled = tag.enable;
-    if (tag.enable) {
-        UIColor *highlightedBgColor = tag.highlightedBgColor ?: [self darkerColor:btn.backgroundColor];
-        [btn setBackgroundImage:[self imageWithColor:highlightedBgColor] forState:UIControlStateHighlighted];
-    }
+//    if (tag.enable) {
+//        UIColor *highlightedBgColor = tag.highlightedBgColor ?: [self darkerColor:btn.backgroundColor];
+//        [btn setBackgroundImage:[self imageWithColor:highlightedBgColor] forState:UIControlStateHighlighted];
+//    }
     
     btn.layer.cornerRadius = tag.cornerRadius;
     btn.layer.masksToBounds = YES;
@@ -57,6 +58,10 @@
     }
     if (tag.selectedBgColor) {
         [btn setBackgroundImage:[self imageWithColor:tag.selectedBgColor] forState:UIControlStateSelected];
+    }
+    
+    if (tag.highlightedBgColor) {
+        [btn setBackgroundImage:[self imageWithColor:tag.highlightedBgColor] forState:UIControlStateHighlighted];
     }
     
     return btn;
@@ -88,23 +93,31 @@
 
 - (void)setHighlighted:(BOOL)highlighted
 {
+    [super setHighlighted:highlighted];
     if (highlighted) {
         if (self.tagObj.highlightedBorderColor) {
             self.layer.borderColor = self.tagObj.highlightedBorderColor.CGColor;
         }
+        
+        self.layer.borderWidth = self.tagObj.highlightedBorderWidth;
+        
     }else{
         self.layer.borderColor = self.tagObj.borderColor.CGColor;
+        self.layer.borderWidth = self.tagObj.borderWidth;
     }
 }
 
 - (void)setSelected:(BOOL)selected
 {
+    [super setSelected:selected];
     if (selected) {
         if (self.tagObj.selectedBorderColor) {
             self.layer.borderColor = self.tagObj.selectedBorderColor.CGColor;
         }
+        self.layer.borderWidth = self.tagObj.selectedBorderWidth;
     } else{
         self.layer.borderColor = self.tagObj.borderColor.CGColor;
+        self.layer.borderWidth = self.tagObj.borderWidth;
     }
 }
 

@@ -155,8 +155,11 @@
 
 - (void)onTag: (UIButton *)btn {
     if (self.shouldRemoveSelections) {
-        for (SKTagButton *btn in self.tags) {
-            btn.selected = NO;
+        for (UIView *view in self.subviews) {
+            if ([view isKindOfClass:[SKTagButton class]]) {
+                SKTagButton *theButton = (SKTagButton*)view;
+                theButton.selected = NO;
+            }
         }
     }
     if (self.shouldSelectOnTap) {

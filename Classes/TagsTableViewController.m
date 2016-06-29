@@ -41,6 +41,8 @@ static NSString *const kTagsTableCellReuseIdentifier = @"TagsTableCell";
     cell.tagView.padding = UIEdgeInsetsMake(12, 12, 12, 12);
     cell.tagView.interitemSpacing = 15;
     cell.tagView.lineSpacing = 10;
+    cell.tagView.shouldSelectOnTap = YES;
+    cell.tagView.shouldRemoveSelections = YES;
     
     [cell.tagView removeAllTags];
     
