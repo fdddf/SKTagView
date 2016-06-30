@@ -238,4 +238,14 @@
     [self invalidateIntrinsicContentSize];
 }
 
+- (void)selectTagWithIndex:(NSInteger)index
+{
+    UIView *view = self.subviews[index];
+    
+    if ([view isKindOfClass:[SKTagButton class]]) {
+        SKTagButton *theButton = (SKTagButton*)view;
+        theButton.selected = YES;
+    }
+}
+
 @end

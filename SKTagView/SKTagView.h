@@ -27,5 +27,7 @@
 - (void)removeTagAtIndex: (NSUInteger)index;
 - (void)removeAllTags;
 
+- (void)selectTagWithIndex:(NSInteger)index;
+
 @end
 
